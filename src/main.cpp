@@ -1,24 +1,44 @@
 #include <iostream>
-#include "objeto.h"
+#include "object.h"
 using namespace std;
 
+// funcao: objeto, movimento e cena
 
-int main() {
-    const int MAX = 100;
-    Objeto objetos[MAX];
-    int qtd = 0;
+int main()
+{
+    char next_func = 'O';
+    bool func_object = true;
+    int count = 1;
+    char current_func;
+    double current_x, current_y, current_width;
+    Object previous_obj_list[1];
+    cin >> current_func >> current_x >> current_y >> current_width;
+    previous_obj_list[0] = Object(current_x, current_y, current_width);
 
-    inserirObjeto(objetos, qtd, MAX, 1, 4.0, 2.5, 3.0);
-    inserirObjeto(objetos, qtd, MAX, 2, 2.5, 5.0, 3.0);
-    inserirObjeto(objetos, qtd, MAX, 3, 6.0, 1.0, 2.0);
+    while (func_object)
+    {
+        Object *dynamic_obj_list = new Object[count];
+        for (int i = 0; i <= count; ++i)
+        {
+            dynamic_obj_list[i] = Object(previous_obj_list[i].getX(), previous_obj_list[i].getY(), previous_obj_list[i].getWidth());
+        }
+        cin >> next_func;
 
-    cout << "Objetos iniciais:" << endl;
-    imprimirObjetos(objetos, qtd);
-
-    atualizarPosicao(objetos, qtd, 2, 3.5, 6.0);
-
-    cout << "\nDepois de atualizar o objeto 2:" << endl;
-    imprimirObjetos(objetos, qtd);
+        if (next_func == 'O')
+        {
+            Object *aux_object_list = new Object[count];
+            for (int i = 0; i <= count; ++i)
+            {
+                previous_obj_list[i] = Object(dynamic_obj_list->getX(), dynamic_obj_list->getY(), dynamic_obj_list->getWidth());
+            }
+            cin >> current_x >> current_y >> current_width;
+            ++count;
+        }
+        else
+        {
+            func_object = false;
+        }
+    }
 
     return 0;
 }

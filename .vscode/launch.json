@@ -2,16 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug TP",
+            "name": "Debug TP (WSL)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/programa",
+            "program": "${workspaceFolder}/bin/tp1.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": true,
-            "MIMode": "gdb",                
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -19,8 +20,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "build",        
-            "miDebuggerPath": "/usr/bin/gdb"
+            "preLaunchTask": "build"
         }
     ]
 }

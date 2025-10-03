@@ -1,16 +1,11 @@
 CXX = g++
-CXXFLAGS = -Wall -g -Iinclude
+CXXFLAGS = -g -Wall -std=c++11 -Iinclude
+
 SRC = $(wildcard src/*.cpp)
-OBJ = $(patsubst src/%.cpp,obj/%.o,$(SRC))
-BIN = bin/programa
+TARGET = bin/tp1.exe
 
-all: $(BIN)
-
-$(BIN): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $@ $^
-
-obj/%.o: src/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+all:
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
 
 clean:
-	rm -f obj/*.o $(BIN)
+	del /Q $(TARGET) 2>nul || true
