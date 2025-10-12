@@ -4,12 +4,14 @@
 class Object
 {
 private:
+    int id;
     double x, y, width;
 
 public:
     Object();
-    Object(double x, double y, double width);
+    Object(int id, double x, double y, double width);
 
+    int getId() const;
     double getX() const;
     double getY() const;
     double getWidth() const;
@@ -18,16 +20,9 @@ public:
     void setWidth(double newWidth);
 
     // opcional: operador de atribuição explícito
-    Object &operator=(const Object &other)
-    {
-        if (this != &other)
-        {
-            x = other.x;
-            y = other.y;
-            width = other.width;
-        }
-        return *this;
-    }
+    Object& operator=(const Object& other);
+
+    static Object* findById(Object* objects, int size, int id);
 };
 
 #endif
