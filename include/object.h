@@ -22,6 +22,7 @@ public:
     // opcional: operador de atribuição explícito
     Object& operator=(const Object& other);
 
+
     static Object* findById(Object* objects, int size, int id);
 };
 
