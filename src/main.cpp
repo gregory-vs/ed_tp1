@@ -9,12 +9,12 @@
 
 using namespace std;
 
-#define MAX_OBJ 100
-#define MAX_MOV 500
+#define MAX_OBJ 30000
+#define MAX_MOV 60000
 
 struct Interval
 {
-    double inicio, fim;
+    long inicio, fim;
 };
 
 void reorderObjects(Object obj_list[], int obj_count, Metrics &metrics) {
@@ -91,9 +91,9 @@ void generateScene(Object obj_list[], int obj_count, Scene *scene, Metrics &metr
 
     for (int i = 0; i < obj_count; i++)
     {
-        double inicio = obj_list[i].getX() - obj_list[i].getWidth() / 2.0;
-        double fim = obj_list[i].getX() + obj_list[i].getWidth() / 2.0;
-        double left = inicio;
+        long inicio = obj_list[i].getX() - obj_list[i].getWidth() / 2.0;
+        long fim = obj_list[i].getX() + obj_list[i].getWidth() / 2.0;
+        long left = inicio;
         double right = fim;
 
         for (int j = 0; j < covered_count; j++)
